@@ -6,6 +6,14 @@ const bodyParser = require("body-parser");
 const labelRoutes = require("./routes/labelRoutes");
 const todoRoutes = require("./routes/todoRoutes");
 
+const https = require("https");
+const fs = require("fs");
+
+const options = {
+  key: fs.readFileSync("server.key"),
+  cert: fs.readFileSync("server.crt"),
+};
+
 // Configure environment
 dotenv.config();
 
