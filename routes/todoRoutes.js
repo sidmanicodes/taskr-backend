@@ -2,7 +2,7 @@ const todoController = require("../controllers/todoController");
 const express = require("express");
 router = express.Router();
 
-// Get all items
+// Get all itemss
 router.get("/", todoController.getAll);
 
 // Create new item
