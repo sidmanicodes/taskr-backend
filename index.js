@@ -33,8 +33,9 @@ app.use(express.urlencoded({ extended: true }));
 mongoose
   .connect(connectionURL)
   .then(() => {
-    app.listen(port, () => {
-      console.log(`Listening on port ${port}`);
+    // Create an HTTPS server
+    https.createServer(options, app).listen(port, () => {
+      console.log(`Listening on port ${port} with HTTPS`);
     });
   })
   .catch((err) => {
