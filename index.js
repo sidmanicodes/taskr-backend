@@ -6,14 +6,6 @@ const bodyParser = require("body-parser");
 const labelRoutes = require("./routes/labelRoutes");
 const todoRoutes = require("./routes/todoRoutes");
 
-const https = require("https");
-const fs = require("fs");
-
-const options = {
-  key: fs.readFileSync("server.key"),
-  cert: fs.readFileSync("server.crt"),
-};
-
 // Configure environment
 dotenv.config();
 
@@ -33,9 +25,8 @@ app.use(express.urlencoded({ extended: true }));
 mongoose
   .connect(connectionURL)
   .then(() => {
-    // Create an HTTPS server
-    https.createServer(options, app).listen(port, () => {
-      console.log(`Listening on port ${port} with HTTPS`);
+    app.listen(port, () => {
+      console.log(`Listening on port ${port}`);
     });
   })
   .catch((err) => {
